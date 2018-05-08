@@ -4,10 +4,27 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "nyc ava"
+    "lint": "xo",
+    "precommit": "lint-staged",
+    "test": "npm run lint && nyc --check-coverage --lines 100 ava"
+  },
+  "xo": {
+    "extends": "prettier",
+    "ignores": "**/database-example.js"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint",
+      "prettier --single-quote --no-semi --write",
+      "git add"
+    ]
   },
   "devDependencies": {
     "ava": "0.25.0",
-    "nyc": "11.7.1"
+    "husky": "0.14.3",
+    "lint-staged": "7.1.0",
+    "nyc": "11.7.1",
+    "prettier": "1.12.1",
+    "xo": "0.21.0"
   }
 }
