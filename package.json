@@ -10,7 +10,10 @@
   },
   "xo": {
     "extends": "prettier",
-    "ignores": "**/database-example.js"
+    "ignores": "**/database-example.js",
+    "rules": {
+      "no-constant-condition": 0
+    }
   },
   "lint-staged": {
     "*.js": [

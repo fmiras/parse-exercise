@@ -1,5 +1,5 @@
 const test = require('ava')
-const parse = require('../')
+const parse = require('..')
 
 test('Parse float number', t => {
   const sNumber = '123.4'

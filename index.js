@@ -11,7 +11,7 @@ const parse = string => {
     return { value: true, tail: string.substring(4) }
   }
 
-  let regexResult = (/^\d+(?:\.\d+)?/).exec(string)
+  const regexResult = /^\d+(?:\.\d+)?/.exec(string)
   if (regexResult) {
     return {
       value: parseFloat(regexResult[0]),
@@ -25,7 +25,7 @@ const parse = string => {
     while (true) {
       if (input[0] === ']') {
         input = input.substring(1)
-        break;
+        break
       }
 
       if (input[0] === ',') {
@@ -39,7 +39,7 @@ const parse = string => {
     return { value: acumulator, tail: input }
   }
 
-  throw new Error('Unexpected input, couldn\'t parse')
+  throw new Error("Unexpected input, couldn't parse")
 }
 
 module.exports = parse
