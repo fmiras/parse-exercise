@@ -4,9 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "ava"
+    "test": "nyc ava"
   },
   "devDependencies": {
-    "ava": "0.25.0"
+    "ava": "0.25.0",
+    "nyc": "11.7.1"
   }
 }
