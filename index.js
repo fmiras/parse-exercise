@@ -1,4 +1,20 @@
-const parse = string => {
+function parse(string) {
+  let endStringIndex
+  if (string.startsWith('"')) {
+    endStringIndex = string.substring(1).indexOf('"') + 1
+  }
+
+  if (string.startsWith("'")) {
+    endStringIndex = string.substring(1).indexOf("'") + 1
+  }
+
+  if (endStringIndex && endStringIndex !== -1) {
+    return {
+      value: string.substring(1, endStringIndex),
+      tail: string.substring(endStringIndex + 1)
+    }
+  }
+
   if (string.startsWith('false')) {
     return { value: false, tail: string.substring(5) }
   }
@@ -39,7 +55,7 @@ const parse = string => {
     return { value: acumulator, tail: input }
   }
 
-  throw new Error("Unexpected input, couldn't parse")
+  throw new TypeError(`Unexpected input, couldn't parse at ${string}`)
 }
 
 module.exports = parse

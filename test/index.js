@@ -50,13 +50,25 @@ test('Parse normal array', t => {
 })
 
 test('Parse array with a second order array', t => {
-  const sArray = '[true,2,[1,2]]'
+  const sArray = '[true,2,[1,2],"hola",false]'
   const { value } = parse(sArray)
-  t.deepEqual(value, [true, 2, [1, 2]])
+  t.deepEqual(value, [true, 2, [1, 2], 'hola', false])
 })
 
 test('Parse an invalid expression', t => {
   const sArray = '[true'
   const thrower = () => parse(sArray)
   t.throws(thrower)
+})
+
+test('Parse strings doble quotes', t => {
+  const str = '"hello"'
+  const { value } = parse(str)
+  t.deepEqual(value, 'hello')
+})
+
+test('Parse strings single quotes', t => {
+  const str = "'hello'"
+  const { value } = parse(str)
+  t.deepEqual(value, 'hello')
 })
